@@ -4,6 +4,7 @@ regs:
     letter: [a-zA-Z]
     digit: [0-9]
     id: {letter}({letter}|{digit})*
+    word: {letter}+
     path: ({letter}|{digit}|\.|\\)+
 
 rules:
@@ -17,13 +18,21 @@ rules:
             goto: open_control_tag
 
     open_control_tag:
+        t:ws:
+            match: \s+
+            clean
+
         t:if:
-            match: if
+            match: {word}
+            equal: if
+
         t:for:
-            match: for
+            match: {word}
+            equal: for
 
         t:include:
-            match: include
+            match: {word}
+            equal: include
             goto: state_include
 
         t:closeControlTag:
@@ -44,7 +53,8 @@ rules:
             match: "?{path}"?
 
         t:with:
-            match: with
+            match: {word}
+            equal: with
             goto: state_with
 
         t:closeControlTag:
