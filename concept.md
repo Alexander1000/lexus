@@ -45,6 +45,7 @@ rules:
 
         t:with:
             match: with
+            goto: state_with
 
         t:closeControlTag:
             match: %}
@@ -67,5 +68,22 @@ rules:
             match: :
             goto: state_with_value
 
+        default:
+            return
+
     state_with_value:
-        return
+        t:opMathLow:
+            match: (+|-)
+
+        t:opMathHigh:
+            match: (*|/)
+
+        t:boolOp:
+            match: (and|or)
+
+        t:withComma:
+            match: ,
+            return
+
+        default:
+            return
