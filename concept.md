@@ -8,15 +8,15 @@ regs:
 
 rules:
 
-    state0:
+    main:
         t:plaintText:
             match: [^\{]+
 
         t:openControlTag:
             match: {%
-            goto: state1
+            goto: open_control_tag
 
-    state1:
+    open_control_tag:
         t:if:
             match: if
         t:for:
