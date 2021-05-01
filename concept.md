@@ -4,6 +4,7 @@ regs:
     letter: [a-zA-Z]
     digit: [0-9]
     id: {letter}({letter}|{digit})*
+    path: ({letter}|{digit}|\.|\\)+
 
 rules:
 
@@ -21,9 +22,13 @@ rules:
         t:for:
             match: for
 
+        t:include:
+            match: include
+            goto: state_include
+
         t:closeControlTag:
             match: %}
-            goto: state0
+            return
 
         t:opMathLow:
             match: (+|-)
@@ -33,3 +38,34 @@ rules:
 
         t:boolOp:
             match: (and|or)
+
+    state_include:
+        t:fileName:
+            match: "?{path}"?
+
+        t:with:
+            match: with
+
+        t:closeControlTag:
+            match: %}
+            return
+
+    state_with:
+        t:openWithTag:
+            match: {
+            goto: state_with_key
+
+        t:closeWithTag:
+            match: }
+            return
+
+    state_with_key:
+        t:withKey:
+            match: {id}
+
+        t:withComma:
+            match: :
+            goto: state_with_value
+
+    state_with_value:
+        return
