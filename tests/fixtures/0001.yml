@@ -9,6 +9,9 @@ regs:
 rules:
 
   main:
+    - match: \s+
+      action: clean
+
     - token: operand
       match: {digit}+
 
