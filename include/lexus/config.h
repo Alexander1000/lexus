@@ -7,6 +7,19 @@
 
 namespace Lexus
 {
+    class Rule
+    {
+    public:
+        Rule(std::string* match);
+
+        void setAction(std::string* action);
+
+    private:
+        std::string* action;
+
+        std::string* match;
+    };
+
     class Config
     {
     public:
@@ -15,6 +28,8 @@ namespace Lexus
     private:
         std::map<std::string, std::string>* regs;
         std::list<std::string>* states;
+
+        std::map<std::string, std::list<Rule*>*>* stateRules;
 
         void scanConfigFile(const char*);
     };

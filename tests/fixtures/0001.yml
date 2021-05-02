@@ -10,7 +10,6 @@ rules:
 
   main:
     - match: \s+
-      action: clean
 
     - action: token(operand)
       match: {digit}+
