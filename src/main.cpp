@@ -1,7 +1,5 @@
 #include <iostream>
 #include <lexus.h>
-#include <io-buffer.h>
-#include <yaml-parser.h>
 
 int main(int argc, char** argv) {
     Lexus::Command command(argc, argv);
@@ -21,12 +19,7 @@ int main(int argc, char** argv) {
         return -1;
     }
 
-    IOBuffer::IOFileReader fileReader(*command.getConfigFile());
-    IOBuffer::CharStream charStream(&fileReader);
-    YamlParser::Stream yamlStream(&charStream);
-    YamlParser::Decoder decoder(&yamlStream);
-
-    YamlParser::Element* valuesObject = decoder.parse();
+    Lexus::Config config(command.getConfigFile()->c_str());
 
     return 0;
 }

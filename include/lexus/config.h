@@ -6,7 +6,10 @@ namespace Lexus
     class Config
     {
     public:
-        Config();
+        Config(const char*);
+
+    private:
+        void scanConfigFile(const char*);
     };
 }
 
