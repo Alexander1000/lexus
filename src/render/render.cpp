@@ -2,8 +2,8 @@
 
 namespace Lexus
 {
-    Render::Render()
+    Render::Render(Config* config)
     {
-        // do something...
+        this->config = config;
     }
 }
