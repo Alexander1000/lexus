@@ -8,11 +8,13 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
 
-# set(LEXUS_SHARED_SOURCES)
+set(LEXUS_SHARED_SOURCES
+    src/config.cpp
+)
 
 set(LEXUS_SOURCES
     src/main.cpp
-    # ${LEXUS_SHARED_SOURCES}
+    ${LEXUS_SHARED_SOURCES}
 )
 
 include_directories(
