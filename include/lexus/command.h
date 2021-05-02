@@ -1,5 +1,5 @@
-#ifndef H_LEXUS_CONFIG
-#define H_LEXUS_CONFIG
+#ifndef H_LEXUS_COMMAND
+#define H_LEXUS_COMMAND
 
 #include <string>
 
