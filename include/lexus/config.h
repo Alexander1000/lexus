@@ -3,6 +3,7 @@
 
 #include <map>
 #include <string>
+#include <list>
 
 namespace Lexus
 {
@@ -13,6 +14,7 @@ namespace Lexus
 
     private:
         std::map<std::string, std::string>* regs;
+        std::list<std::string>* states;
 
         void scanConfigFile(const char*);
     };
