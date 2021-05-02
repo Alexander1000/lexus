@@ -33,10 +33,10 @@ namespace Lexus
                 auto regsElement = rootObject->at("regs");
                 if (regsElement->getType() == YamlParser::ElementType::ObjectType) {
                     auto regsElementObject = (std::map<std::string, YamlParser::Element*>*) regsElement->getData();
-                    for (auto regsElementIt = regsElementObject->begin(); regsElementIt != regsElementObject->end(); regsElementIt++) {
-                        if (regsElementIt->second->getType() == YamlParser::ElementType::PlainTextType) {
-                            auto strValue = (std::string*) regsElementIt->second->getData();
-                            (*this->regs)[regsElementIt->first] = *strValue;
+                    for (auto & regsElementIt : *regsElementObject) {
+                        if (regsElementIt.second->getType() == YamlParser::ElementType::PlainTextType) {
+                            auto strValue = (std::string*) regsElementIt.second->getData();
+                            (*this->regs)[regsElementIt.first] = *strValue;
                         }
                     }
                 }
@@ -47,8 +47,8 @@ namespace Lexus
                 auto rulesElement = rootObject->at("rules");
                 if (rulesElement->getType() == YamlParser::ElementType::ObjectType) {
                     auto rulesElementObject = (std::map<std::string, YamlParser::Element*>*) rulesElement->getData();
-                    for (auto rulesElementIt = rulesElementObject->begin(); rulesElementIt != rulesElementObject->end(); rulesElementIt++) {
-                        this->states->push_back(rulesElementIt->first);
+                    for (auto & rulesElementIt : *rulesElementObject) {
+                        this->states->push_back(rulesElementIt.first);
                     }
                 }
             }
