@@ -5,10 +5,10 @@
 
 namespace Lexus
 {
-    class Config
+    class Command
     {
     public:
-        Config(int argc, char** argv);
+        Command(int argc, char** argv);
 
         [[nodiscard]] bool isHelp() const;
         static const char* getHelpText();

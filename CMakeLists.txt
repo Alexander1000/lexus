@@ -9,7 +9,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
 
 set(LEXUS_SHARED_SOURCES
-    src/config.cpp
+    src/command.cpp
 )
 
 set(LEXUS_SOURCES

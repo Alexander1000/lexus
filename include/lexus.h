@@ -3,6 +3,6 @@
 
 #define LEXUS_VERSION "0.0.1"
 
-#include <lexus/config.h>
+#include <lexus/command.h>
 
 #endif

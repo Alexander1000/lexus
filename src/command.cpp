@@ -3,7 +3,7 @@
 
 namespace Lexus
 {
-    Config::Config(int argc, char **argv)
+    Command::Command(int argc, char **argv)
     {
         // defaults:
         this->is_help = false;
@@ -31,22 +31,22 @@ namespace Lexus
         }
     }
 
-    bool Config::isVersion() const
+    bool Command::isVersion() const
     {
         return this->is_version;
     }
 
-    const char* Config::getVersionText()
+    const char* Command::getVersionText()
     {
         return "lexus version: " LEXUS_VERSION "\n";
     }
 
-    bool Config::isHelp() const
+    bool Command::isHelp() const
     {
         return this->is_help;
     }
 
-    const char* Config::getHelpText()
+    const char* Command::getHelpText()
     {
         return "Usage: lexus [OPTIONS]\n"
                "Common options:\n"
@@ -55,7 +55,7 @@ namespace Lexus
                "    -v, --version              Print version and exit.";
     }
 
-    std::string* Config::getConfigFile()
+    std::string* Command::getConfigFile()
     {
         return this->configFile;
     }

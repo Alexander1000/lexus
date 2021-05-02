@@ -4,24 +4,24 @@
 #include <yaml-parser.h>
 
 int main(int argc, char** argv) {
-    Lexus::Config config(argc, argv);
+    Lexus::Command command(argc, argv);
 
-    if (config.isHelp()) {
-        std::cout << Lexus::Config::getHelpText() << std::endl;
+    if (command.isHelp()) {
+        std::cout << Lexus::Command::getHelpText() << std::endl;
         return 0;
     }
 
-    if (config.isVersion()) {
-        std::cout << Lexus::Config::getVersionText() << std::endl;
+    if (command.isVersion()) {
+        std::cout << Lexus::Command::getVersionText() << std::endl;
         return 0;
     }
 
-    if (config.getConfigFile() == nullptr) {
+    if (command.getConfigFile() == nullptr) {
         std::cout << "Config file is required" << std::endl;
         return -1;
     }
 
-    IOBuffer::IOFileReader fileReader(*config.getConfigFile());
+    IOBuffer::IOFileReader fileReader(*command.getConfigFile());
     IOBuffer::CharStream charStream(&fileReader);
     YamlParser::Stream yamlStream(&charStream);
     YamlParser::Decoder decoder(&yamlStream);
