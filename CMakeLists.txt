@@ -22,11 +22,11 @@ include_directories(
     /usr/local/include
 )
 
-# find_library(IO_BUFFER libio-buffer.a)
-# message(STATUS "Found io-buffer library: ${IO_BUFFER}")
+find_library(IO_BUFFER libio-buffer.a)
+message(STATUS "Found io-buffer library: ${IO_BUFFER}")
 
-# find_library(YAML_PARSER libyaml-parser.a)
-# message(STATUS "Found yaml-parser library: ${YAML_PARSER}")
+find_library(YAML_PARSER libyaml-parser.a)
+message(STATUS "Found yaml-parser library: ${YAML_PARSER}")
 
 add_executable(
     ${PROJECT_NAME} src/main.cpp
@@ -35,7 +35,7 @@ add_executable(
 
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
 
-#target_link_libraries(${PROJECT_NAME}
-#    ${IO_BUFFER}
-#    ${YAML_PARSER}
-#)
+target_link_libraries(${PROJECT_NAME}
+    ${IO_BUFFER}
+    ${YAML_PARSER}
+)
