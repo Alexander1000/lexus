@@ -1,6 +1,9 @@
 #ifndef H_LEXUS_CONFIG
 #define H_LEXUS_CONFIG
 
+#include <map>
+#include <string>
+
 namespace Lexus
 {
     class Config
@@ -9,6 +12,8 @@ namespace Lexus
         Config(const char*);
 
     private:
+        std::map<std::string, std::string>* regs;
+
         void scanConfigFile(const char*);
     };
 }
