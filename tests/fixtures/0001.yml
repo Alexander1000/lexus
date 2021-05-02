@@ -12,14 +12,14 @@ rules:
     - match: \s+
       action: clean
 
-    - token: operand
+    - action: token(operand)
       match: {digit}+
 
-    - token: opMathLow
+    - action: token(opMathLow)
       match: (\+|\-)
 
-    - token: opMathHigh
+    - action: token(opMathHigh)
       match: (\*|\/)
 
-    - token: equal
+    - action: token(equal)
       match: =
