@@ -12,6 +12,7 @@ set(LEXUS_SHARED_SOURCES
     src/command.cpp
     src/config/config.cpp
     src/config/rule.cpp
+    src/render/render.cpp
 )
 
 set(LEXUS_SOURCES

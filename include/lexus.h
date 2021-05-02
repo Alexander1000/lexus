@@ -5,5 +5,6 @@
 
 #include <lexus/command.h>
 #include <lexus/config.h>
+#include <lexus/render.h>
 
 #endif
