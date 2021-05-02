@@ -49,7 +49,12 @@ namespace Lexus
                 if (rulesElement->getType() == YamlParser::ElementType::ObjectType) {
                     auto rulesElementObject = (std::map<std::string, YamlParser::Element*>*) rulesElement->getData();
                     for (auto & rulesElementIt : *rulesElementObject) {
+                        // list states
                         this->states->push_back(rulesElementIt.first);
+
+                        // initialize list rules for state
+                        auto listRules = new std::list<Rule*>;
+
                         if (rulesElementIt.second->getType() == YamlParser::ElementType::ListType) {
                             auto rulesStateElementList = (std::list<YamlParser::Element*>*) rulesElementIt.second->getData();
                             for (auto & rulesStateElementListIt : *rulesStateElementList) {
@@ -75,12 +80,14 @@ namespace Lexus
                                     }
 
                                     if (rule != nullptr) {
-                                        // this->stateRules
-                                        // setup state rules
+                                        listRules->push_back(rule);
                                     }
                                 }
                             }
                         }
+
+                        // setup list rules for state
+                        (*this->stateRules)[rulesElementIt.first] = listRules;
                     }
                 }
             }
