@@ -14,5 +14,10 @@ int main(int argc, char** argv) {
         return 0;
     }
 
+    if (config.getConfigFile() == nullptr) {
+        std::cout << "Config file is required" << std::endl;
+        return -1;
+    }
+
     return 0;
 }
