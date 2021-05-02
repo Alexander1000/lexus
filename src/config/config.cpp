@@ -92,7 +92,5 @@ namespace Lexus
                 }
             }
         }
-
-        std::cout << std::endl;
     }
 }
