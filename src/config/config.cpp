@@ -56,9 +56,12 @@ namespace Lexus
                         auto listRules = new std::list<Rule*>;
 
                         if (rulesElementIt.second->getType() == YamlParser::ElementType::ListType) {
+                            // list rules
                             auto rulesStateElementList = (std::list<YamlParser::Element*>*) rulesElementIt.second->getData();
+
+                            // iterate each rule
                             for (auto & rulesStateElementListIt : *rulesStateElementList) {
-                                // parse element
+                                // parse rule element
                                 if (rulesStateElementListIt->getType() == YamlParser::ElementType::ObjectType) {
                                     auto ruleObject = (std::map<std::string, YamlParser::Element*>*) rulesStateElementListIt->getData();
                                     Rule* rule = nullptr;
