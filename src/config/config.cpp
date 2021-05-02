@@ -17,6 +17,7 @@ namespace Lexus
     {
         this->regs = new std::map<std::string, std::string>;
         this->states = new std::list<std::string>;
+        this->stateRules = new std::map<std::string, std::list<Rule*>*>;
 
         IOBuffer::IOFileReader fileReader(configFile);
         IOBuffer::CharStream charStream(&fileReader);
@@ -53,6 +54,31 @@ namespace Lexus
                             auto rulesStateElementList = (std::list<YamlParser::Element*>*) rulesElementIt.second->getData();
                             for (auto & rulesStateElementListIt : *rulesStateElementList) {
                                 // parse element
+                                if (rulesStateElementListIt->getType() == YamlParser::ElementType::ObjectType) {
+                                    auto ruleObject = (std::map<std::string, YamlParser::Element*>*) rulesStateElementListIt->getData();
+                                    Rule* rule = nullptr;
+
+                                    if (ruleObject->find("match") != ruleObject->end()) {
+                                        auto ruleMatchEl = ruleObject->at("match");
+                                        if (ruleMatchEl->getType() == YamlParser::ElementType::PlainTextType) {
+                                            auto match = (std::string*) ruleMatchEl->getData();
+                                            rule = new Rule(match);
+                                        }
+                                    }
+
+                                    if (rule != nullptr && ruleObject->find("action") != ruleObject->end()) {
+                                        auto ruleActionEl = ruleObject->at("action");
+                                        if (ruleActionEl->getType() == YamlParser::ElementType::PlainTextType) {
+                                            auto action = (std::string*) ruleActionEl->getData();
+                                            rule->setAction(action);
+                                        }
+                                    }
+
+                                    if (rule != nullptr) {
+                                        // this->stateRules
+                                        // setup state rules
+                                    }
+                                }
                             }
                         }
                     }
