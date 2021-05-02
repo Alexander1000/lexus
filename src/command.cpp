@@ -28,6 +28,18 @@ namespace Lexus
                 i++;
                 continue;
             }
+
+            if (paramName == "-o" || paramName == "--output-dir") {
+                this->outputDir = new std::string(argv[i+1]);
+                i++;
+                continue;
+            }
+
+            if (paramName == "--headers-dir") {
+                this->headersDir = new std::string(argv[i+1]);
+                i++;
+                continue;
+            }
         }
     }
 
@@ -50,9 +62,11 @@ namespace Lexus
     {
         return "Usage: lexus [OPTIONS]\n"
                "Common options:\n"
-               "    -h, --help                 Show this message and exit.\n"
-               "    -c, --config [file]        Config file.\n"
-               "    -v, --version              Print version and exit.";
+               "    -h, --help                     Show this message and exit.\n"
+               "    -c, --config      [file]       Config file.\n"
+               "    -o, --output-dir  [directory]  Output directory for render files.\n"
+               "        --headers-dir [directory]  Headers directory for render files.\n"
+               "    -v, --version                  Print version and exit.";
     }
 
     std::string* Command::getConfigFile()

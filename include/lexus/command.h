@@ -23,6 +23,9 @@ namespace Lexus
         bool is_version;
 
         std::string* configFile;
+
+        std::string* outputDir;
+        std::string* headersDir;
     };
 }
 
