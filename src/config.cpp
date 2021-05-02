@@ -22,10 +22,16 @@ namespace Lexus
                 this->is_version = true;
                 break;
             }
+
+            if (paramName == "-c" || paramName == "--config") {
+                this->configFile = new std::string(argv[i+1]);
+                i++;
+                continue;
+            }
         }
     }
 
-    bool Config::isVersion()
+    bool Config::isVersion() const
     {
         return this->is_version;
     }
@@ -35,7 +41,7 @@ namespace Lexus
         return "lexus version: " LEXUS_VERSION "\n";
     }
 
-    bool Config::isHelp()
+    bool Config::isHelp() const
     {
         return this->is_help;
     }
@@ -45,6 +51,12 @@ namespace Lexus
         return "Usage: lexus [OPTIONS]\n"
                "Common options:\n"
                "    -h, --help                 Show this message and exit.\n"
+               "    -c, --config [file]        Config file.\n"
                "    -v, --version              Print version and exit.";
+    }
+
+    std::string* Config::getConfigFile()
+    {
+        return this->configFile;
     }
 }
