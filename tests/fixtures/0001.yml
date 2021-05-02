@@ -1,3 +1,5 @@
+# lexer rules for template-render-wizard application
+
 regs:
   letter: [a-zA-Z]
   digit: [0-9]
@@ -8,10 +10,10 @@ regs:
 rules:
 
   main:
-    t:plaintText:
+    - token: plaintText
       match: [^\{]+
 
-    t:openControlTag:
+    - token: openControlTag
       match: {%
       goto: open_control_tag
 
