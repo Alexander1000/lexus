@@ -13,6 +13,7 @@ set(LEXUS_SHARED_SOURCES
     src/config/config.cpp
     src/config/rule.cpp
     src/render/render.cpp
+    src/render/render_token_const.cpp
 )
 
 set(LEXUS_SOURCES

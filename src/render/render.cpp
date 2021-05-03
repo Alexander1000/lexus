@@ -12,6 +12,6 @@ namespace Lexus
 
     void Render::run()
     {
-        // do render
+        this->renderTokenConst();
     }
 }

@@ -18,6 +18,8 @@ namespace Lexus
 
         std::string* outputDir;
         std::string* headersDir;
+
+        void renderTokenConst();
     };
 }
 
