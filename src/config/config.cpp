@@ -96,4 +96,18 @@ namespace Lexus
             }
         }
     }
+
+    std::list<std::string>* Config::getStates()
+    {
+        return this->states;
+    }
+
+    std::list<Rule*>* Config::getRulesByState(std::string* stateName)
+    {
+        if (this->stateRules->find(*stateName) == this->stateRules->end()) {
+            return nullptr;
+        }
+
+        return this->stateRules->at(*stateName);
+    }
 }

@@ -14,6 +14,8 @@ namespace Lexus
 
         void setAction(std::string* action);
 
+        std::string* getAction();
+
     private:
         std::string* action;
 
@@ -24,6 +26,10 @@ namespace Lexus
     {
     public:
         Config(const char*);
+
+        std::list<std::string>* getStates();
+
+        std::list<Rule*>* getRulesByState(std::string*);
 
     private:
         std::map<std::string, std::string>* regs;
