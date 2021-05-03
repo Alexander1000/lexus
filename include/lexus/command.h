@@ -18,6 +18,10 @@ namespace Lexus
 
         std::string* getConfigFile();
 
+        std::string* getOutputDir();
+
+        std::string* getHeadersDir();
+
     private:
         bool is_help;
         bool is_version;

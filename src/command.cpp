@@ -73,4 +73,14 @@ namespace Lexus
     {
         return this->configFile;
     }
+
+    std::string* Command::getOutputDir()
+    {
+        return this->outputDir;
+    }
+
+    std::string * Command::getHeadersDir()
+    {
+        return this->headersDir;
+    }
 }
