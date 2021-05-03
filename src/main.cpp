@@ -19,7 +19,20 @@ int main(int argc, char** argv) {
         return -1;
     }
 
+    if (command.getOutputDir() == nullptr) {
+        std::cout << "Output dir is required" << std::endl;
+        return -1;
+    }
+
+    if (command.getHeadersDir() == nullptr) {
+        std::cout << "Headers dir is required" << std::endl;
+        return -1;
+    }
+
     Lexus::Config config(command.getConfigFile()->c_str());
+
+    Lexus::Render render(&config, command.getOutputDir(), command.getHeadersDir());
+    render.run();
 
     return 0;
 }
